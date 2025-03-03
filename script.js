@@ -1,4 +1,4 @@
-let dateConatiner = document.querySelector("date-container");
+let dateConatiner = document.querySelector(".date-container");
 let hoursConatiner = document.querySelector(".hours");
 let minitesConatiner = document.querySelector(".minites");
 let secondsConatiner = document.querySelector(".seconds");
@@ -34,17 +34,29 @@ function formatTime(time){
 }
 
 function updateClock(){
+
     const today = new Date();
     let date = today.getDate();
-    console.log(date)
+    //console.log(date)
     let day = weekdays[today.getDay()];
     let month = monthNmaes[today.getMonth()];
 
-    console.log(day,month)
-    console.log(today.getDay(),today.getMonth());
+    //console.log(day,month)
+    //console.log(today.getDay(),today.getMonth());
 
-    let hours = formatTime(today.getHours())
+    let hours = formatTime(today.getHours());
+    let minites = formatTime(today.getMinutes());
+    let seconds = formatTime(today.getSeconds());
+
+    dateConatiner.innerHTML = ` <p>${day}</p> <p><span>${date}</span></p><p>${month}</p> ` ;
+
+    hoursConatiner.textContent = hours + ":";
+    minitesConatiner.textContent = minites + ":";
+    secondsConatiner.textContent = seconds;
+
 }
 
-updateClock();
+setInterval(updateClock,1000);
+
+
 
